@@ -8,5 +8,12 @@ const searchPhone = ()  => {
 
     fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => displaySearch(data.data))
+}
+
+const displaySearch = phones => {
+    const searchResult = document.getElementById('search-result');
+    for(const phone of phones) {
+        console.log(phone);
+    }
 }
