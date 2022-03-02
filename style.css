@@ -1,0 +1,17 @@
+@media (max-width: 576px) {
+  #view-details {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  #search-result {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .photo p {
+    text-align: justify;
+  }
+}
