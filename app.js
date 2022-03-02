@@ -3,7 +3,7 @@ const searchPhone = ()  => {
 
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // const errorMsg = document.getElementById('error-msg');
+
 
     searchField.value = '';
 
@@ -14,9 +14,21 @@ const searchPhone = ()  => {
     .then(data => displaySearch(data.data.slice(0, 20)))
 }
 
+      /* search phone and display phone */
 const displaySearch = phones => {
+    console.log(phones);
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+
+    /* error message */
+    const errorMsg = document.getElementById('error-msg');
+    if(phones.length == 0) {
+        errorMsg.innerText = "No Phone Found"
+    }
+    else{
+        errorMsg.innerText = "";
+    }
+
     phones.forEach(phone => {
         const div = document.createElement('div');
         div.innerHTML = `<div class="col">
@@ -33,6 +45,7 @@ const displaySearch = phones => {
     });
 }
 
+       /* details btn and show details */
 const phoneDetails = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
 
@@ -49,7 +62,7 @@ const displayDetails = detail => {
         <div class="modal-dialog modal-dialog-scrollable">
          <h4 class= "text-info">${detail.name}</h4>
          <img src="${detail.image}" alt="">
-         <p>${detail.releaseDate}</p>
+         <p class= "mt-2"><span class= "fw-bold"> Release Date:</span> ${detail.releaseDate ? detail.releaseDate : 'no release date'}</p>
 
          <h5 class="text-info my-2">Main Features</h5>
         <p><span class= "fw-bold">Storage:</span> ${detail.mainFeatures.storage}</p>
@@ -61,12 +74,13 @@ const displayDetails = detail => {
         <p>${detail.mainFeatures.sensors}</p>
 
         <h5 class="text-info my-2">Others</h5>
-        <p><span class= "fw-bold">WLAN:</span> ${detail.others.WLAN}</p>
-        <p><span class= "fw-bold">Bluetooth:</span> ${detail.others.Bluetooth}</p>
-        <p><span class= "fw-bold">GPS:</span> ${detail.others.GPS}</p>
-        <p><span class= "fw-bold">NFC:</span> ${detail.others.NFC}</p>
-        <p><span class= "fw-bold">Radio:</span> ${detail.others.Radio}</p>
-        <p><span class= "fw-bold">USB:</span> ${detail.others.USB}</p>
+        <p><span class= "fw-bold">WLAN:</span> ${detail.others?.WLAN}</p>
+        <p><span class= "fw-bold">Bluetooth:</span> ${detail.others?.Bluetooth}</p>
+        <p><span class= "fw-bold">GPS:</span> ${detail.others?.GPS}</p>
+        <p><span class= "fw-bold">NFC:</span> ${detail.others?.NFC}</p>
+        <p><span class= "fw-bold">Radio:</span> ${detail.others?.Radio}</p>
+        <p><span class= "fw-bold">USB:</span> ${detail.others?.USB}</p>
+        
 
         </div>
     `
