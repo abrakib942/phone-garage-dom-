@@ -74,12 +74,12 @@ const displayDetails = detail => {
         <p>${detail.mainFeatures.sensors}</p>
 
         <h5 class="text-info my-2">Others</h5>
-        <p><span class= "fw-bold">WLAN:</span> ${detail.others?.WLAN}</p>
-        <p><span class= "fw-bold">Bluetooth:</span> ${detail.others?.Bluetooth}</p>
-        <p><span class= "fw-bold">GPS:</span> ${detail.others?.GPS}</p>
-        <p><span class= "fw-bold">NFC:</span> ${detail.others?.NFC}</p>
-        <p><span class= "fw-bold">Radio:</span> ${detail.others?.Radio}</p>
-        <p><span class= "fw-bold">USB:</span> ${detail.others?.USB}</p>
+        <p><span class= "fw-bold">WLAN:</span> ${detail.others && detail.others.WLAN ? detail.others.WLAN : "Not found"}</p>
+        <p><span class= "fw-bold">Bluetooth:</span> ${detail.others && detail.others.Bluetooth ? detail.others.Bluetooth : "Not found"}</p>
+        <p><span class= "fw-bold">GPS:</span> ${detail.others && detail.others.GPS ? detail.others.GPS : "Not found"}</p>
+        <p><span class= "fw-bold">NFC:</span> ${detail.others && detail.others.NFC ? detail.others.NFC : "Not found"}</p>
+        <p><span class= "fw-bold">Radio:</span> ${detail.others && detail.others.Radio ? detail.others.Radio : "Not found"}</p>
+        <p><span class= "fw-bold">USB:</span> ${detail.others && detail.others.USB ? detail.others.USB : "Not found"}</p>
         
 
         </div>
