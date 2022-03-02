@@ -1,6 +1,9 @@
 const searchPhone = ()  => {
+   document.getElementById('view-details').innerHTML = ""
+
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
+    // const errorMsg = document.getElementById('error-msg');
 
     searchField.value = '';
 
@@ -8,7 +11,7 @@ const searchPhone = ()  => {
 
     fetch(url)
     .then(res => res.json())
-    .then(data => displaySearch(data.data))
+    .then(data => displaySearch(data.data.slice(0, 20)))
 }
 
 const displaySearch = phones => {
@@ -21,7 +24,7 @@ const displaySearch = phones => {
             <img src="${phone.image}" class="card-img-top p-4" alt="...">
             <div class="card-body">
                 <h4 class="card-title  text-primary">${phone.brand} ${phone.phone_name}</h4>
-                <button onclick= "phoneDetails('${phone.slug}')" class= "btn btn-danger mt-4">Details</button>
+                <a href="#"><button onclick= "phoneDetails('${phone.slug}')" class= "btn btn-danger mt-4">Details</button></a>
             </div>
             </div>
         </div>`
@@ -39,7 +42,6 @@ const phoneDetails = (id) => {
 }
 
 const displayDetails = detail => {
-    console.log(detail);
     const viewDetails = document.getElementById('view-details');
     viewDetails.textContent = '';
     const div = document.createElement('div');
